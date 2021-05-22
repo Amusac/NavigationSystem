@@ -35,7 +35,7 @@ class GpsData:
         s.readline()
         while True:
             sentence = s.readline().decode("utf-8")
-            s.readable()
+            print(s.readable())
             print("test")
             print(sentence)
             if sentence[0] != "$":

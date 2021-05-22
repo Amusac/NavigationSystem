@@ -33,7 +33,7 @@ class GpsData:
     def run_gps(self):
         s = Serial("/dev/ttyAMA0", 9600, timeout=10)
         s.readline()
-        print(s.readline())
+        print(s.readline().decode("utf-8"))
         print(s.readable())
         while s.readable():
             sentence = s.readline().decode("utf-8")

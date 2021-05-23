@@ -5,9 +5,12 @@
 #
 # Solar-boat Project 2021
 
-import pigpio
+import pigpio  # pigpioモジュールを使用
 import time
 from Params import Params
+
+# pigpioの準備
+pi = pigpio.pi()
 
 
 class PwmOutthruster:
@@ -51,19 +54,17 @@ class PwmOutthruster:
 if __name__ == "__main__":
     params = Params()
     sample = PwmOutthruster(params.pin_servo_out, params.pin_thruster_out)
-    resolution = 20
+    resolution = 5
     pwm_range = 1900 - 1500
     dp = pwm_range / resolution
     servo_pulse_width = 1500
     thruster_pulse_width = 1500
     try:
-        # move servo thruster
-        for i in range(resolution):
-            #time.sleep(0.5)
-            servo_pulse_width += dp
-            sample.thruster_pulse_width = servo_pulse_width
-            sample.update_pulse_width()
-            print(sample.thruster_pulse_width)
+        # move thruster
+        print("Turning thruster on")
+        pi.write(sample.pin_thruster,1)
+        time.sleep(resolution)
+        print("Turning thruster off")
     except KeyboardInterrupt:
         print("KeyboardInterrupt")
     finally:

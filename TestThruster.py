@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# PwmOutthruster.py
+# TestThruster.py
 #
 # Solar-boat Project 2021
 
@@ -13,7 +13,7 @@ from Params import Params
 pi = pigpio.pi()
 
 
-class PwmOutthruster:
+class TestThruster:
     # [thruster]
     #
     # [ ESC]
@@ -24,18 +24,13 @@ class PwmOutthruster:
 
     frequency = 50
 
-    def __init__(self, pin_servo, pin_thruster):
+    def __init__(self, pin_thruster):
         # GPIO number
-        self.pin_servo = pin_servo
         self.pin_thruster = pin_thruster
-        self.servo_pulse_width = 1500
-        self.thruster_pulse_width = 1500
 
         # Setup for Out
         self.pi = pigpio.pi()
-        self.pi.set_mode(self.pin_servo, pigpio.OUTPUT)
         self.pi.set_mode(self.pin_thruster, pigpio.OUTPUT)
-        self.pi.set_servo_pulsewidth(self.pin_servo, 1500)  # neutral
         self.pi.set_servo_pulsewidth(self.pin_thruster, 1500)  # neutral
         return
 
@@ -53,19 +48,20 @@ class PwmOutthruster:
 # test code
 if __name__ == "__main__":
     params = Params()
-    sample = PwmOutthruster(params.pin_servo_out, params.pin_thruster_out)
-    resolution = 5
-    pwm_range = 1900 - 1500
-    dp = pwm_range / resolution
-    servo_pulse_width = 1500
+    sample = TestThruster(params.pin_thruster_out)
+    testtime = 5
+    freq = 2 #frequency
+    duty = 500000 #duty
     thruster_pulse_width = 1500
     try:
         # move thruster
         print("Turning thruster on")
-        pi.write(sample.pin_thruster,1)
-        time.sleep(resolution)
+        pi.hardware_PWM(params.pin_thruster_out, freq, duty)
+        time.sleep(testtime)
         print("Turning thruster off")
+        pi.stop()
     except KeyboardInterrupt:
         print("KeyboardInterrupt")
     finally:
+        print("Execution finished.")
         sample.finalize()

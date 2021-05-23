@@ -60,10 +60,14 @@ if __name__ == "__main__":
 
         print("Initialaze Brushless Motor. Please remove the battery.")
 
+        pi.set_servo_pulsewidth(params.pin_thruster_out, maxPulse)
+
+        print("バッテリーを接続して、ビービーと鳴ったらEnterを押してください。")
         inp = input()
         if inp == '':
             pi.set_servo_pulsewidth(params.pin_thruster_out, minPulse)
             time.sleep(3)
+
         print("\"stop\"")
         print("\"u\" to up speed")
         print("\"d\" to down speed")  
@@ -84,9 +88,9 @@ if __name__ == "__main__":
                 break
             else:
                 print("stop or u or d!")
-        pi.stop() 
-        print("Execution finished.")       
+        pi.stop()        
+        print("Execution Successed.")
     except KeyboardInterrupt:
         print("KeyboardInterrupt")
     finally:
-        print("Execution Successed.")
+        print("Execution finished.")

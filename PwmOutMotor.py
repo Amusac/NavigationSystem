@@ -62,7 +62,7 @@ if __name__ == "__main__":
     try:
         # move thruster
         print("Turning thruster on")
-        pi.write(sample.pin_thruster,1)
+        pi.write(sample.pin_thruster, 1)
         time.sleep(resolution)
         print("Turning thruster off")
     except KeyboardInterrupt:

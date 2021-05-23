@@ -48,7 +48,7 @@ if __name__ == "__main__":
     
     # pigpioの準備
     pi = pigpio.pi()
-    
+
     params = Params()
     sample = TestThruster(params.pin_thruster_out)
     testtime = 5
@@ -66,4 +66,3 @@ if __name__ == "__main__":
         print("KeyboardInterrupt")
     finally:
         print("Execution finished.")
-        sample.finalize()

@@ -9,8 +9,6 @@ import pigpio  # pigpioモジュールを使用
 import time
 from Params import Params
 
-# pigpioの準備
-pi = pigpio.pi()
 
 
 class TestThruster:
@@ -47,6 +45,10 @@ class TestThruster:
 
 # test code
 if __name__ == "__main__":
+    
+    # pigpioの準備
+    pi = pigpio.pi()
+    
     params = Params()
     sample = TestThruster(params.pin_thruster_out)
     testtime = 5

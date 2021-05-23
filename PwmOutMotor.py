@@ -59,7 +59,7 @@ if __name__ == "__main__":
     try:
         # move servo thruster
         for i in range(resolution):
-            time.sleep(0.5)
+            #time.sleep(0.5)
             servo_pulse_width += dp
             sample.thruster_pulse_width = servo_pulse_width
             sample.update_pulse_width()

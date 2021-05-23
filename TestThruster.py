@@ -10,7 +10,6 @@ import time
 from Params import Params
 
 
-
 class TestThruster:
     # [thruster]
     #
@@ -45,15 +44,15 @@ class TestThruster:
 
 # test code
 if __name__ == "__main__":
-    
+
     # pigpioの準備
     pi = pigpio.pi()
-    
+
     params = Params()
     sample = TestThruster(params.pin_thruster_out)
     testtime = 5
-    freq = 2 #frequency
-    duty = 500000 #duty
+    freq = 2  # frequency
+    duty = 500000  # duty
     thruster_pulse_width = 1500
     try:
         # move thruster

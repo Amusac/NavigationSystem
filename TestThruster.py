@@ -62,12 +62,12 @@ if __name__ == "__main__":
 
         pi.set_servo_pulsewidth(params.pin_thruster_out, maxPulse)
 
-        print("バッテリーを接続して、ビービーと鳴ったらEnterを押してください。")
+        print("Connect the battery and press Enter.")
         inp = input()
         if inp == "":
             pi.set_servo_pulsewidth(params.pin_thruster_out, minPulse)
             time.sleep(3)
-            
+
         print("\"stop\"")
         print("\"u\" to up speed")
         print("\"d\" to down speed")  

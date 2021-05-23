@@ -64,23 +64,29 @@ if __name__ == "__main__":
 
         print("バッテリーを接続して、ビービーと鳴ったらEnterを押してください。")
         inp = input()
-        if inp == '':
+        if inp == "":
             pi.set_servo_pulsewidth(params.pin_thruster_out, minPulse)
             time.sleep(3)
+<<<<<<< HEAD
 
         print("\"stop\"")
         print("\"u\" to up speed")
         print("\"d\" to down speed")  
+=======
+        print('"stop"')
+        print('"u" to up speed')
+        print('"d" to down speed')
+>>>>>>> d9a0b61191b4a29bf87ed1de8fb10b35d857292a
         speed = 1000
         print("speed = %d" % speed)
-        while True:    
+        while True:
             pi.set_servo_pulsewidth(params.pin_thruster_out, speed)
             inp = input()
             if inp == "d":
                 speed -= 100
                 print("speed = %d" % speed)
-            elif inp == "u":    
-                speed += 100    # incrementing the speed like hell
+            elif inp == "u":
+                speed += 100  # incrementing the speed like hell
                 print("speed = %d" % speed)
             elif inp == "stop":
                 speed = 0
@@ -88,8 +94,13 @@ if __name__ == "__main__":
                 break
             else:
                 print("stop or u or d!")
+<<<<<<< HEAD
         pi.stop()        
         print("Execution Successed.")
+=======
+        pi.stop()
+        print("Execution finished.")
+>>>>>>> d9a0b61191b4a29bf87ed1de8fb10b35d857292a
     except KeyboardInterrupt:
         print("KeyboardInterrupt")
     finally:

@@ -60,11 +60,21 @@ if __name__ == "__main__":
     servo_pulse_width = 1500
     thruster_pulse_width = 1500
     try:
+<<<<<<< HEAD
         # move thruster
         print("Turning thruster on")
         pi.write(sample.pin_thruster,1)
         time.sleep(resolution)
         print("Turning thruster off")
+=======
+        # move servo thruster
+        for i in range(resolution):
+            # time.sleep(0.5)
+            servo_pulse_width += dp
+            sample.thruster_pulse_width = servo_pulse_width
+            sample.update_pulse_width()
+            print(sample.thruster_pulse_width)
+>>>>>>> 04ae1b636e436fea1f0841bf9b4797e6cb53b925
     except KeyboardInterrupt:
         print("KeyboardInterrupt")
     finally:

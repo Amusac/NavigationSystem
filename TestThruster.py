@@ -68,9 +68,15 @@ if __name__ == "__main__":
             pi.set_servo_pulsewidth(params.pin_thruster_out, minPulse)
             time.sleep(3)
 
+<<<<<<< HEAD
         print("\"stop\"")
         print("\"u\" to up speed")
         print("\"d\" to down speed")  
+=======
+        print('"stop"')
+        print('"u" to up speed')
+        print('"d" to down speed')
+>>>>>>> f76c519c8cc19f0b85464890bc8557b3ab4fe2b9
         speed = 1000
         print("speed = %d" % speed)
         while True:
@@ -88,7 +94,7 @@ if __name__ == "__main__":
                 break
             else:
                 print("stop or u or d!")
-        pi.stop()        
+        pi.stop()
         print("Execution Successed.")
     except KeyboardInterrupt:
         print("KeyboardInterrupt")

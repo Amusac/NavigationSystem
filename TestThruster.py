@@ -54,7 +54,7 @@ if __name__ == "__main__":
         params = Params()
         sample = TestThruster(params.pin_servo_out, params.pin_thruster_out)
 
-        minPulse = 1500
+        minPulse = 1100
         maxPulse = 2000
         sample.thruster_pulse_width = minPulse
 

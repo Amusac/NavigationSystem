@@ -51,21 +51,20 @@ class TestThruster:
 if __name__ == "__main__":
 
     try:
-        # pigpioの準備
-        pi = pigpio.pi()
-
         params = Params()
+        sample = TestThruster(params.pin_servo_out, params.pin_thruster_out)
+
         minPulse = 700
         maxPulse = 2000
 
         print("Initialaze Brushless Motor. Please remove the battery.")
 
-        pi.set_servo_pulsewidth(params.pin_thruster_out, maxPulse)
+        sample.set_servo_pulsewidth(params.pin_thruster_out, maxPulse)
 
-        print("Connect the battery and press Enter.")
+        print("Connect the battery and press Enter after the beeping stops.")
         inp = input()
         if inp == "":
-            pi.set_servo_pulsewidth(params.pin_thruster_out, minPulse)
+            sample.set_servo_pulsewidth(params.pin_thruster_out, minPulse)
             time.sleep(3)
 
         print("\"stop\"")
@@ -74,7 +73,7 @@ if __name__ == "__main__":
         speed = 1000
         print("speed = %d" % speed)
         while True:
-            pi.set_servo_pulsewidth(params.pin_thruster_out, speed)
+            sample.set_servo_pulsewidth(params.pin_thruster_out, speed)
             inp = input()
             if inp == "d":
                 speed -= 100
@@ -84,11 +83,11 @@ if __name__ == "__main__":
                 print("speed = %d" % speed)
             elif inp == "stop":
                 speed = 0
-                pi.set_servo_pulsewidth(params.pin_thruster_out, 0)
+                sample.set_servo_pulsewidth(params.pin_thruster_out, 0)
                 break
             else:
                 print("stop or u or d!")
-        pi.stop()
+        sample.stop()
         print("Execution Successed.")
     except KeyboardInterrupt:
         print("KeyboardInterrupt")

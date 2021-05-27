@@ -67,9 +67,9 @@ if __name__ == "__main__":
             sample.set_servo_pulsewidth(params.pin_thruster_out, minPulse)
             time.sleep(3)
 
-        print("\"stop\"")
-        print("\"u\" to up speed")
-        print("\"d\" to down speed")  
+        print('"stop"')
+        print('"u" to up speed')
+        print('"d" to down speed')
         speed = 1000
         print("speed = %d" % speed)
         while True:

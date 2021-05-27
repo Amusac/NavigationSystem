@@ -56,6 +56,7 @@ if __name__ == "__main__":
 
         minPulse = 700
         maxPulse = 2000
+        sample.thruster_pulse_width = minPulse
 
         print("Initialaze Brushless Motor. Please remove the battery.")
 
@@ -63,7 +64,6 @@ if __name__ == "__main__":
         print("Connect the battery and press Enter after the beeping stops.")
         inp = input()
         if inp == "":
-            sample.servo_pulse_width(params.pin_thruster_out, minPulse)
             time.sleep(3)
 
         print('"stop"')
@@ -72,7 +72,7 @@ if __name__ == "__main__":
         speed = 1000
         print("speed = %d" % speed)
         while True:
-            sample.servo_pulse_width(params.pin_thruster_out, speed)
+            sample.thruster_pulse_width(params.pin_thruster_out, speed)
             inp = input()
             if inp == "d":
                 speed -= 100

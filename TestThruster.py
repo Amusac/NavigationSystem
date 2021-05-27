@@ -60,7 +60,6 @@ if __name__ == "__main__":
 
         print("Initialaze Brushless Motor. Please remove the battery.")
 
-
         print("Connect the battery and press Enter after the beeping stops.")
         inp = input()
         if inp == "":

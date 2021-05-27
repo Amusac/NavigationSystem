@@ -68,20 +68,19 @@ if __name__ == "__main__":
         print('"stop"')
         print('"u" to up speed')
         print('"d" to down speed')
-        speed = 1000
-        print("speed = %d" % speed)
+        sample.thruster_pulse_width = 1000
+        print("speed = %d" % sample.thruster_pulse_width)
         while True:
-            sample.thruster_pulse_width(params.pin_thruster_out, speed)
+            sample.update_pulse_width()
             inp = input()
             if inp == "d":
-                speed -= 100
-                print("speed = %d" % speed)
+                sample.thruster_pulse_width -= 100
+                print("speed = %d" % sample.thruster_pulse_width)
             elif inp == "u":
-                speed += 100  # incrementing the speed like hell
-                print("speed = %d" % speed)
+                sample.thruster_pulse_width += 100  # incrementing the speed like hell
+                print("speed = %d" % sample.thruster_pulse_width)
             elif inp == "stop":
-                speed = 0
-                sample.servo_pulse_width(params.pin_thruster_out, 0)
+                sample.thruster_pulse_width = 0
                 break
             else:
                 print("stop or u or d!")

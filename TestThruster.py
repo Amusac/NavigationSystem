@@ -54,7 +54,7 @@ if __name__ == "__main__":
         params = Params()
         sample = TestThruster(params.pin_servo_out, params.pin_thruster_out)
 
-        minPulse = 700
+        minPulse = 1500
         maxPulse = 2000
         sample.thruster_pulse_width = minPulse
 
@@ -68,7 +68,7 @@ if __name__ == "__main__":
         print('"stop"')
         print('"u" to up speed')
         print('"d" to down speed')
-        sample.thruster_pulse_width = 1000
+        sample.thruster_pulse_width = minPulse
         print("speed = %d" % sample.thruster_pulse_width)
         while True:
             sample.update_pulse_width()
@@ -80,11 +80,11 @@ if __name__ == "__main__":
                 sample.thruster_pulse_width += 100  # incrementing the speed like hell
                 print("speed = %d" % sample.thruster_pulse_width)
             elif inp == "stop":
-                sample.thruster_pulse_width = 0
+                sample.thruster_pulse_width = 1100
                 break
             else:
                 print("stop or u or d!")
-        sample.stop()
+        sample.finalize()
         print("Execution Successed.")
     except KeyboardInterrupt:
         print("KeyboardInterrupt")

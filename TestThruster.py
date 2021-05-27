@@ -54,9 +54,10 @@ if __name__ == "__main__":
         params = Params()
         sample = TestThruster(params.pin_servo_out, params.pin_thruster_out)
 
-        minPulse = 1100
+
+        minPulse = 700
         maxPulse = 2000
-        sample.thruster_pulse_width = minPulse
+        sample.thruster_pulse_width = 1100
 
         print("Initialaze Brushless Motor. Please remove the battery.")
 

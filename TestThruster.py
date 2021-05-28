@@ -82,32 +82,16 @@ if __name__ == "__main__":
             inp = input()
             if inp == "u":
                 sample.thruster_pulse_width += 100  # incrementing the speed like hell
-                print(
-                    "speed = %d direction = %d"
-                    % sample.thruster_pulse_width
-                    % sample.servo_pulse_width
-                )
+                print("speed = %d direction = %d" % (sample.thruster_pulse_width,  sample.servo_pulse_width))
             elif inp == "j":
                 sample.thruster_pulse_width -= 100
-                print(
-                    "speed = %d direction = %d"
-                    % sample.thruster_pulse_width
-                    % sample.servo_pulse_width
-                )
+                print("speed = %d direction = %d" % (sample.thruster_pulse_width,  sample.servo_pulse_width))
             elif inp == "k":
                 sample.thruster_pulse_width += 100
-                print(
-                    "speed = %d direction = %d"
-                    % sample.thruster_pulse_width
-                    % sample.servo_pulse_width
-                )
+                print("speed = %d direction = %d" % (sample.thruster_pulse_width,  sample.servo_pulse_width))
             elif inp == "h":
                 sample.thruster_pulse_width -= 100
-                print(
-                    "speed = %d direction = %d"
-                    % sample.thruster_pulse_width
-                    % sample.servo_pulse_width
-                )
+                print("speed = %d direction = %d" % (sample.thruster_pulse_width,  sample.servo_pulse_width))
             elif inp == "stop":
                 sample.thruster_pulse_width = 1100
                 break

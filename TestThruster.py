@@ -64,8 +64,8 @@ if __name__ == "__main__":
         inp = input()
         if inp == "":
             time.sleep(3)
-        print("PWM_width", sample.get_servo_pulsewidth(params.pin_thruster_out))
-        print("frequency:", sample.get_frquency(params.pin_thruster_out))
+        print("PWM_width", sample.get_servo_pulsewidth())
+        print("frequency:", sample.get_frquency())
         print('"stop"')
         print('"u" to up speed')
         print('"d" to down speed')

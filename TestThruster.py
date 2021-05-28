@@ -62,7 +62,7 @@ if __name__ == "__main__":
         inp = input()
         if inp == "":
             time.sleep(3)
-            
+
         print('"stop"')
         print('"u" to up speed')
         print('"d" to down speed')

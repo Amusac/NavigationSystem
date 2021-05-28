@@ -67,7 +67,7 @@ if __name__ == "__main__":
         if inp == "":
             time.sleep(1)
 
-        print('"Commands are as follaws"')
+        print('"Commands are as follows"')
         print('"stop"')
         print('"u" to up speed')
         print('"j" to down speed')

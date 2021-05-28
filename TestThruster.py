@@ -62,7 +62,9 @@ if __name__ == "__main__":
         minPulse = 1100
         maxPulse = 1900
 
-        print("Initialaze Brushless Motor and Servo Motor. Please reconnect the batteries.")
+        print(
+            "Initialaze Brushless Motor and Servo Motor. Please reconnect the batteries."
+        )
         print("Press Enter after the beeping stops.")
         inp = input()
         if inp == "":

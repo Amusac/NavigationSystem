@@ -24,8 +24,6 @@ class RemoteControll:
             self._params.pin_servo_out, self._params.pin_thruster_out
         )
 
-    
-    
     def _update_mode(self):
         mode_duty_ratio = self._pwm_read.pulse_width["mode"]
         or_pulse = self._pwm_read.pulse_width["OR"]
@@ -43,4 +41,3 @@ class RemoteControll:
             self._status.mode = "AN"
         else:
             print("Error: mode updating failed", file=sys.stderr)
-    

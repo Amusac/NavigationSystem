@@ -55,8 +55,13 @@ if __name__ == "__main__":
     try:
         params = Params()
         sample = TestThruster(params.pin_servo_out, params.pin_thruster_out)
+<<<<<<< HEAD
         print("PWM_width",sample.pi.get_servo_pulsewidth(params.pin_thruster_out))
         print("frequency:",sample.pi.get_frquency(params.pin_thruster_out))
+=======
+        print("PWM_width", sample.get_servo_pulsewidth())
+        print("frequency:", sample.get_frquency)
+>>>>>>> e081a13ccd6018ba622f73986d7688d7d9bb6121
         minPulse = 1100
         maxPulse = 2000
 

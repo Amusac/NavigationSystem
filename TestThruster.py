@@ -87,10 +87,10 @@ if __name__ == "__main__":
                 sample.thruster_pulse_width -= 100
                 print("speed = %d direction = %d" % (sample.thruster_pulse_width,  sample.servo_pulse_width))
             elif inp == "k":
-                sample.thruster_pulse_width += 100
+                sample.servo_pulse_width += 100
                 print("speed = %d direction = %d" % (sample.thruster_pulse_width,  sample.servo_pulse_width))
             elif inp == "h":
-                sample.thruster_pulse_width -= 100
+                sample.servo_pulse_width -= 100
                 print("speed = %d direction = %d" % (sample.thruster_pulse_width,  sample.servo_pulse_width))
             elif inp == "stop":
                 sample.thruster_pulse_width = 1100

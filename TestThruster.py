@@ -33,7 +33,7 @@ class TestThruster:
         self.pi.set_mode(self.pin_servo, pigpio.OUTPUT)
         self.pi.set_mode(self.pin_thruster, pigpio.OUTPUT)
         self.pi.set_servo_pulsewidth(self.pin_servo, 1500)  # neutral
-        self.pi.set_servo_pulsewidth(self.pin_thruster, 1500)  # neutral
+        self.pi.set_servo_pulsewidth(self.pin_thruster, 1100)  # neutral
         return
 
     def finalize(self):

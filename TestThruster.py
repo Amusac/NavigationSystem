@@ -35,7 +35,6 @@ class TestThruster:
         self.pi.set_servo_pulsewidth(self.pin_servo, 1500)  # neutral
         self.pi.set_servo_pulsewidth(self.pin_thruster, 1500)  # neutral
 
-        self.pi.get_PWM_frquency(self.pin_thruster)
         return
 
     def finalize(self):

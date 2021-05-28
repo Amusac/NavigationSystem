@@ -61,7 +61,7 @@ if __name__ == "__main__":
         # thruster
         minPulse = 1100
         maxPulse = 1900
-    
+
         print("Initialaze Brushless Motor. Please reconnect the battery.")
         inp = input()
         if inp == "":

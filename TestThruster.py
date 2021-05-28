@@ -34,8 +34,6 @@ class TestThruster:
         self.pi.set_mode(self.pin_thruster, pigpio.OUTPUT)
         self.pi.set_servo_pulsewidth(self.pin_servo, 1500)  # neutral
         self.pi.set_servo_pulsewidth(self.pin_thruster, 1500)  # neutral
-        self.pi.get_PWM_frequency(self)
-        self.pi.get_servo_pulsewidth(self)
         return
 
     def finalize(self):
@@ -64,8 +62,7 @@ if __name__ == "__main__":
         inp = input()
         if inp == "":
             time.sleep(3)
-        print("PWM_width", sample.get_servo_pulsewidth())
-        print("frequency:", sample.get_frquency())
+            
         print('"stop"')
         print('"u" to up speed')
         print('"d" to down speed')

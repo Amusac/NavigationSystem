@@ -1,7 +1,7 @@
 ##!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-#SolarBoatProject2021
+# SolarBoatProject2021
 
 from Params import Params
 from PwmOut import PwmOut
@@ -9,6 +9,7 @@ from PwmRead import PwmRead
 
 
 import sys
+
 
 class RemoteControll:
     def __init__(self):

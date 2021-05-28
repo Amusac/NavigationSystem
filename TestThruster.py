@@ -54,9 +54,6 @@ if __name__ == "__main__":
         params = Params()
         sample = TestThruster(params.pin_servo_out, params.pin_thruster_out)
         # servo
-        resolution = 80
-        pwm_range = 1900 - 1500
-        dp = pwm_range / resolution
         servo_pulse_width = 1500
         # thruster
         minPulse = 1100

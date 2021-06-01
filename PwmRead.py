@@ -184,4 +184,3 @@ if __name__ == "__main__":
     finally:
         pwm_read.finalize()
         print("Execution finished.")
-

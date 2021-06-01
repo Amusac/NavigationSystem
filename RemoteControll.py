@@ -80,6 +80,7 @@ if __name__ == "__main__":
         # Control Loop
         driver.do_operation()
     except KeyboardInterrupt:
+        driver.finalize()
         print("KeyboardInterrupt")
     finally:
         # If you finalize this program,

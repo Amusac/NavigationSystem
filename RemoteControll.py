@@ -86,5 +86,3 @@ if __name__ == "__main__":
         # this program set the system to stop
         driver.finalize()
         print("finish")
-
-

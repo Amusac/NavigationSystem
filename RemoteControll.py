@@ -73,7 +73,6 @@ class RemoteControll:
         return
 
 
-
 if __name__ == "__main__":
     print("RemoteControll.py")
     driver = RemoteControll()

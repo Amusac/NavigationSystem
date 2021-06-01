@@ -25,48 +25,29 @@ class RemoteControll:
         )
 
     def do_operation(self):
-        while self._time_manager.in_time_limit():
-            # update pwm
-            # Read pwm pulse width
-            self._pwm_read.measure_pulse_width()
-            # Set the readout signals as the output signals
-            self._pwm_out.servo_pulse_width = self._pwm_read.pulse_width["servo"]
-            self._pwm_out.thruster_pulse_width = self._pwm_read.pulse_width["thruster"]
+        # update pwm
+        # Read pwm pulse width
+        self._pwm_read.measure_pulse_width()
+        # Set the readout signals as the output signals
+        self._pwm_out.servo_pulse_width = self._pwm_read.pulse_width["servo"]
+        self._pwm_out.thruster_pulse_width = self._pwm_read.pulse_width["thruster"]
 
-            # read
-            #
-            #       self._status.read_gps()
+        self._update_mode()
 
-            self._update_mode()
+        # for test
+        self._pwm_read.print_pulse_width()
 
-            # for test
-            self._pwm_read.print_pulse_width()
+        mode = self._status.mode
+        if mode == "RC":
+            pass
+        elif mode == "AN":
+            self._auto_navigation()
+        elif mode == "OR":
+            self._out_of_range_operation()
 
-            # ina226
-            print(
-                "Current: "
-                + str(round(self.i_sensor.readShuntCurrent(), 3))
-                + "A"
-                + ", Voltage: "
-                + str(round(self.i_sensor.readBusVoltage(), 3))
-                + "V"
-                + ", Power:"
-                + str(round(self.i_sensor.readBusPower(), 3))
-                + "W"
-            )
-
-            mode = self._status.mode
-            if mode == "RC":
-                pass
-            elif mode == "AN":
-                self._auto_navigation()
-            elif mode == "OR":
-                self._out_of_range_operation()
-
-            self._pwm_out.update_pulse_width()
-            self._print_log()
-            time.sleep(self._sleep_time)
-        return
+        self._pwm_out.update_pulse_width()
+        self._print_log()
+        time.sleep(self._sleep_time)
 
     def _update_mode(self):
         mode_duty_ratio = self._pwm_read.pulse_width["mode"]

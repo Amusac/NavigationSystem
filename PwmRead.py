@@ -164,6 +164,7 @@ class PwmRead:
 # test code
 if __name__ == "__main__":
     from Params import Params
+
     try:
         print("Attempting to recieve signal....")
         params = Params()
@@ -179,7 +180,7 @@ if __name__ == "__main__":
             pwm_read.measure_pulse_width()
             print("test2")
             pwm_read.print_pulse_width()
-            
+
     except KeyboardInterrupt:
         print("KeyboardInterrupt")
     finally:

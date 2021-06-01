@@ -24,7 +24,6 @@ class RemoteControll:
             self._params.pin_servo_out, self._params.pin_thruster_out
         )
 
-
     def do_operation(self):
         while self._time_manager.in_time_limit():
             # update pwm
@@ -35,7 +34,7 @@ class RemoteControll:
             self._pwm_out.thruster_pulse_width = self._pwm_read.pulse_width["thruster"]
 
             # read
-            # 
+            #
             #       self._status.read_gps()
 
             self._update_mode()
@@ -68,7 +67,6 @@ class RemoteControll:
             self._print_log()
             time.sleep(self._sleep_time)
         return
-
 
     def _update_mode(self):
         mode_duty_ratio = self._pwm_read.pulse_width["mode"]

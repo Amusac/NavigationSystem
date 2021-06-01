@@ -9,7 +9,8 @@
 #
 
 import pigpio  # pigpioモジュールを使用
-#import RPi.GPIO as GPIO
+
+# import RPi.GPIO as GPIO
 import time
 from queue import Queue
 
@@ -35,11 +36,11 @@ class PwmRead:
         self._or_mean = 1500
 
         # setup for GPIO
-        #GPIO.setmode(GPIO.BCM)
-        #GPIO.setup(pin_servo, GPIO.IN)
-        #GPIO.setup(pin_thruster, GPIO.IN)
-        #GPIO.setup(pin_mode, GPIO.IN)
-        #GPIO.setup(pin_or, GPIO.IN)
+        # GPIO.setmode(GPIO.BCM)
+        # GPIO.setup(pin_servo, GPIO.IN)
+        # GPIO.setup(pin_thruster, GPIO.IN)
+        # GPIO.setup(pin_mode, GPIO.IN)
+        # GPIO.setup(pin_or, GPIO.IN)
         self.pi = pigpio.pi()
         self.pi.set_mode(self.pin_servo, pigpio.INPUT)
         self.pi.set_mode(self.pin_thruster, pigpio.INPUT)
@@ -160,10 +161,10 @@ class PwmRead:
         return
 
     def finalize(self):
-        #GPIO.cleanup(self.pin_mode)
-        #GPIO.pi.cleanup(self.pin_servo)
-        #GPIO.pi.cleanup(self.pin_thruster)
-        #GPIO.pi.cleanup(self.pin_or)
+        # GPIO.cleanup(self.pin_mode)
+        # GPIO.pi.cleanup(self.pin_servo)
+        # GPIO.pi.cleanup(self.pin_thruster)
+        # GPIO.pi.cleanup(self.pin_or)
         return
 
 

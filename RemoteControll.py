@@ -88,7 +88,34 @@ class RemoteControll:
         else:
             print("Error: mode updating failed", file=sys.stderr)
 
+    def finalize(self):
+        self._pwm_read.finalize()
+        self._pwm_out.finalize()
+        return
+
 
 if __name__ == "__main__":
     print("RemoteControll.py")
     driver = RemoteControll()
+    try:
+        # Command line arguments
+        args = sys.argv
+        if len(args) < 2:
+            raise InitialArgumentsError
+        # Load parameters
+        driver.load(args[1])
+        # Control Loop
+        driver.do_operation()
+    except InitialArgumentsError:
+        print("[ERROR] NO ARGUMENTS")
+        print("Usage: python3 main.py [parameter_file]")
+    except KeyboardInterrupt:
+        print("KeyboardInterrupt")
+    finally:
+        # If you finalize this program,
+        # this program set the system to stop
+        driver.finalize()
+        print("finish")
+
+class InitialArgumentsError(Exception):
+    pass

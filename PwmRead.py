@@ -164,6 +164,7 @@ class PwmRead:
 # test code
 if __name__ == "__main__":
     from Params import Params
+
     print("Attempting to recieve signal....")
     params = Params()
     pwm_read = PwmRead(

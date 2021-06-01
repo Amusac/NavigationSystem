@@ -108,3 +108,5 @@ if __name__ == "__main__":
         print("finish")
 
 
+class InitialArgumentsError(Exception):
+    pass

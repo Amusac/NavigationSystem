@@ -34,7 +34,7 @@ class PwmRead:
         self._or_mean = 1500
 
         # setup for GPIO
-        GPIO.setmode(GPIO.BCM)
+        GPIO.setmode(GPIO.BOARD)
         GPIO.setup(pin_servo, GPIO.IN)
         GPIO.setup(pin_thruster, GPIO.IN)
         GPIO.setup(pin_mode, GPIO.IN)

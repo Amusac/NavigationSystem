@@ -9,6 +9,7 @@ from PwmRead import PwmRead
 
 
 import sys
+import time
 
 
 class RemoteControll:

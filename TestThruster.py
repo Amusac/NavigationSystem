@@ -109,7 +109,7 @@ if __name__ == "__main__":
         sample.finalize()
         print("Execution Successed.")
     except KeyboardInterrupt:
-        sample.finalize()
         print("KeyboardInterrupt")
     finally:
+        sample.finalize()
         print("Execution finished.")

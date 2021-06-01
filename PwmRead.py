@@ -164,16 +164,22 @@ class PwmRead:
 # test code
 if __name__ == "__main__":
     from Params import Params
-    print("Attempting to recieve signal....")
-    params = Params()
-    pwm_read = PwmRead(
-        params.pin_mode_in,
-        params.pin_servo_in,
-        params.pin_thruster_in,
-        params.pin_or,
-    )
-    for i in range(20):
-        time.sleep(1)
-        pwm_read.measure_pulse_width()
-        pwm_read.print_pulse_width()
-    pwm_read.finalize()
+    try:
+        print("Attempting to recieve signal....")
+        params = Params()
+        pwm_read = PwmRead(
+            params.pin_mode_in,
+            params.pin_servo_in,
+            params.pin_thruster_in,
+            params.pin_or,
+        )
+        for i in range(20):
+            time.sleep(1)
+            pwm_read.measure_pulse_width()
+            pwm_read.print_pulse_width()
+            
+    except KeyboardInterrupt:
+        print("KeyboardInterrupt")
+    finally:
+        pwm_read.finalize()
+        print("Execution finished.")

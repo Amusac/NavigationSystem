@@ -179,8 +179,8 @@ class PwmRead:
         GPIO.cleanup(self.pin_mode)
         GPIO.cleanup(self.pin_servo)
         GPIO.cleanup(self.pin_thruster)
-        GPIO.pi.cleanup(self.pin_or)
-        # self.pi.stop()
+        GPIO.cleanup(self.pin_or)
+        #self.pi.stop()
         return
 
 

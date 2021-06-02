@@ -68,7 +68,6 @@ class PwmRead:
         # mode
         sum_mode = 0.0
         num_error = 0
-        print("test1")
         for i in range(self._num_cycles):
             GPIO.wait_for_edge(self.pin_mode, GPIO.RISING)
             start = time.time()
@@ -87,7 +86,6 @@ class PwmRead:
         # servo
         sum_servo = 0.0
         num_error = 0
-        print("test2")
         for i in range(self._num_cycles):
             GPIO.wait_for_edge(self.pin_servo, GPIO.RISING)
             start = time.time()
@@ -116,7 +114,6 @@ class PwmRead:
             else:
                 num_error += 1
 
-        print("test9")
         if self._num_cycles != num_error:
             ave = sum_thruster / (self._num_cycles - num_error)
             ave = round(ave, -2)
@@ -131,30 +128,27 @@ class PwmRead:
         # b = time.time() - a
         # print("It takes ", b, "[s] to measure PWM")
 
-        print("test12")
-        # insert measurement pin_OR # calculation self.pulse_width[3]
-        GPIO.wait_for_edge(self.pin_or, GPIO.RISING)
-        start = time.time()
-        GPIO.wait_for_edge(self.pin_or, GPIO.FALLING)
-        latest_or_pulse = (time.time() - start) * 1000 * 1000
-        print("test12")
-        # update queue
-        oldest_or_pulse = self._or_queue.get()
-        self._or_queue.put(latest_or_pulse)
+        # # insert measurement pin_OR # calculation self.pulse_width[3]
+        # GPIO.wait_for_edge(self.pin_or, GPIO.RISING)
+        # start = time.time()
+        # GPIO.wait_for_edge(self.pin_or, GPIO.FALLING)
+        # latest_or_pulse = (time.time() - start) * 1000 * 1000
+        # # update queue
+        # oldest_or_pulse = self._or_queue.get()
+        # self._or_queue.put(latest_or_pulse)
 
-        # update mean value
-        self._or_mean += (latest_or_pulse - oldest_or_pulse) / self._or_queue_size
+        # # update mean value
+        # self._or_mean += (latest_or_pulse - oldest_or_pulse) / self._or_queue_size
 
-        self.pulse_width["OR"] = self._or_mean
-
-        print("test13")
+        # self.pulse_width["OR"] = self._or_mean
+        
         return
 
     def print_pulse_width(self):
         print("mode:     ", self.pulse_width["mode"], "[us]")
         print("servo:    ", self.pulse_width["servo"], "[us]")
         print("thruster: ", self.pulse_width["thruster"], "[us]")
-        print("OR_judgement: ", self.pulse_width["OR"], "[us]")
+        # print("OR_judgement: ", self.pulse_width["OR"], "[us]")
         print("")
         return
 
@@ -182,7 +176,6 @@ if __name__ == "__main__":
         for i in range(20):
             time.sleep(1)
             pwm_read.measure_pulse_width()
-            print("test10")
             pwm_read.print_pulse_width()
 
     except KeyboardInterrupt:

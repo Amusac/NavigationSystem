@@ -8,7 +8,6 @@
 #   Author: Tetsuro Ninomiya
 #
 
-
 import RPi.GPIO as GPIO
 import time
 from queue import Queue
@@ -91,9 +90,6 @@ class PwmRead:
             GPIO.wait_for_edge(self.pin_servo, GPIO.RISING)
             start = time.time()
             GPIO.wait_for_edge(self.pin_servo, GPIO.FALLING)
-            # self.pi.wait_for_edge(self.pin_servo, pigpio.RISING_EDGE)
-            # start = time.time()
-            # self.pi.wait_for_edge(self.pin_servo, pigpio.FALLING_EDGE)
             pulse = (time.time() - start) * 1000 * 1000
             if 900 < pulse < 2200:
                 sum_servo += pulse
@@ -112,9 +108,6 @@ class PwmRead:
             GPIO.wait_for_edge(self.pin_thruster, GPIO.RISING)
             start = time.time()
             GPIO.wait_for_edge(self.pin_thruster, GPIO.FALLING)
-            # self.pi.wait_for_edge(self.pin_thruster, pigpio.RISING_EDGE)
-            # start = time.time()
-            # self.pi.wait_for_edge(self.pin_thruster, pigpio.FALLING_EDGE)
             pulse = (time.time() - start) * 1000 * 1000
             if 900 < pulse < 2200:
                 sum_thruster += pulse
@@ -139,9 +132,6 @@ class PwmRead:
         GPIO.wait_for_edge(self.pin_or, GPIO.RISING)
         start = time.time()
         GPIO.wait_for_edge(self.pin_or, GPIO.FALLING)
-        # self.pi.wait_for_edge(self.pin_or, pigpio.RISING_EDGE)
-        # start = time.time()
-        # self.pi.wait_for_edge(self.pin_or, pigpio.FALLING_EDGE)
         latest_or_pulse = (time.time() - start) * 1000 * 1000
 
         # update queue
@@ -168,7 +158,6 @@ class PwmRead:
         GPIO.cleanup(self.pin_servo)
         GPIO.cleanup(self.pin_thruster)
         GPIO.cleanup(self.pin_or)
-        # self.pi.stop()
         return
 
 

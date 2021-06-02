@@ -102,8 +102,8 @@ class PwmRead:
             ave = sum_servo / (self._num_cycles - num_error)
             if 1000 < ave < 2000:
                 self.pulse_width["servo"] = ave
-        
-        print("servo=",self.pulse_width["servo"])
+
+        print("servo=", self.pulse_width["servo"])
 
         # thruster
         sum_thruster = 0.0

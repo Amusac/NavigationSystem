@@ -182,6 +182,7 @@ if __name__ == "__main__":
 
     except KeyboardInterrupt:
         print("KeyboardInterrupt")
+        pwm_read.finalize()
         pass
     finally:
         pwm_read.finalize()

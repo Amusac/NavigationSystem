@@ -74,7 +74,9 @@ class PwmRead:
         # mode
         sum_mode = 0.0
         num_error = 0
+        print("start measure1")
         for i in range(self._num_cycles):
+            print("start measure2")
             self.pi.wait_for_edge(self.pin_mode, pigpio.RISING_EDGE)
             start = time.time()
             self.pi.wait_for_edge(self.pin_mode, pigpio.FALLING_EDGE)
@@ -92,6 +94,7 @@ class PwmRead:
         # servo
         sum_servo = 0.0
         num_error = 0
+        print("start measure3")
         for i in range(self._num_cycles):
             self.pi.wait_for_edge(self.pin_servo, pigpio.RISING_EDGE)
             start = time.time()
@@ -164,6 +167,7 @@ class PwmRead:
         #GPIO.pi.cleanup(self.pin_servo)
         #GPIO.pi.cleanup(self.pin_thruster)
         #GPIO.pi.cleanup(self.pin_or)
+        self.pi.stop()
         return
 
 
@@ -189,6 +193,7 @@ if __name__ == "__main__":
 
     except KeyboardInterrupt:
         print("KeyboardInterrupt")
+        pass
     finally:
         pwm_read.finalize()
         print("Execution finished.")

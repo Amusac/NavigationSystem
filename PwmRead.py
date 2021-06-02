@@ -75,9 +75,7 @@ class PwmRead:
         # mode
         sum_mode = 0.0
         num_error = 0
-        print("start measure1")
         for i in range(self._num_cycles):
-            print("start measure2")
             GPIO.wait_for_edge(self.pin_mode, GPIO.RISING)
             start = time.time()
             GPIO.wait_for_edge(self.pin_mode, GPIO.FALLING)
@@ -98,7 +96,6 @@ class PwmRead:
         # servo
         sum_servo = 0.0
         num_error = 0
-        print("start measure3")
         for i in range(self._num_cycles):
             GPIO.wait_for_edge(self.pin_mode, GPIO.RISING)
             start = time.time()
@@ -199,9 +196,7 @@ if __name__ == "__main__":
         )
         for i in range(20):
             time.sleep(1)
-            print("test1")
             pwm_read.measure_pulse_width()
-            print("test2")
             pwm_read.print_pulse_width()
 
     except KeyboardInterrupt:

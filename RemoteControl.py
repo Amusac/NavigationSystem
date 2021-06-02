@@ -12,7 +12,7 @@ import sys
 import time
 
 
-class RemoteControll:
+class RemoteControl:
     def __init__(self):
         self._params = Params()
         self._pwm_read = PwmRead(
@@ -75,8 +75,8 @@ class RemoteControll:
 
 
 if __name__ == "__main__":
-    print("RemoteControll.py")
-    driver = RemoteControll()
+    print("RemoteControl.py")
+    driver = RemoteControl()
     try:
         # Control Loop
         driver.do_operation()

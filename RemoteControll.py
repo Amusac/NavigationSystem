@@ -82,7 +82,7 @@ if __name__ == "__main__":
         for i in range(20):
             time.sleep(1)
             driver.do_operation()
-            
+
     except KeyboardInterrupt:
         print("KeyboardInterrupt")
     finally:

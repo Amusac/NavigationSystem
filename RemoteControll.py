@@ -33,7 +33,7 @@ class RemoteControll:
         self._pwm_out.servo_pulse_width = self._pwm_read.pulse_width["servo"]
         self._pwm_out.thruster_pulse_width = self._pwm_read.pulse_width["thruster"]
 
-        # self._update_mode()
+        self._update_mode()
 
         # for test
         self._pwm_read.print_pulse_width()
@@ -48,7 +48,7 @@ class RemoteControll:
 
         self._pwm_out.update_pulse_width()
         # self._print_log()
-        time.sleep(self._sleep_time)
+        # time.sleep(self._sleep_time)
 
     # def _update_mode(self):
     #     mode_duty_ratio = self._pwm_read.pulse_width["mode"]

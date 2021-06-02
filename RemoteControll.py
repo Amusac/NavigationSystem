@@ -79,7 +79,10 @@ if __name__ == "__main__":
     driver = RemoteControll()
     try:
         # Control Loop
-        driver.do_operation()
+        for i in range(20):
+            time.sleep(1)
+            driver.do_operation()
+            
     except KeyboardInterrupt:
         print("KeyboardInterrupt")
     finally:

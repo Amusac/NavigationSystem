@@ -102,7 +102,6 @@ class PwmRead:
             ave = sum_servo / (self._num_cycles - num_error)
             if 1000 < ave < 2000:
                 self.pulse_width["servo"] = ave
-        
 
         # thruster
         sum_thruster = 0.0
@@ -145,7 +144,7 @@ class PwmRead:
         self._or_mean += (latest_or_pulse - oldest_or_pulse) / self._or_queue_size
 
         self.pulse_width["OR"] = self._or_mean
-        
+
         self.pulse_width["tes14"]
         return
 

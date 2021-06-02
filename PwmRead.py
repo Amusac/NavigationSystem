@@ -180,6 +180,7 @@ if __name__ == "__main__":
         for i in range(20):
             time.sleep(1)
             pwm_read.measure_pulse_width()
+            print("test10")
             pwm_read.print_pulse_width()
 
     except KeyboardInterrupt:

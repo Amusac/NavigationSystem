@@ -8,9 +8,9 @@
 #   Author: Tetsuro Ninomiya
 #
 
-import pigpio  # pigpioモジュールを使用
+#import pigpio  # pigpioモジュールを使用
 
-# import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import time
 from queue import Queue
 
@@ -36,16 +36,16 @@ class PwmRead:
         self._or_mean = 1500
 
         # setup for GPIO
-        # GPIO.setmode(GPIO.BCM)
-        # GPIO.setup(pin_servo, GPIO.IN)
-        # GPIO.setup(pin_thruster, GPIO.IN)
-        # GPIO.setup(pin_mode, GPIO.IN)
-        # GPIO.setup(pin_or, GPIO.IN)
-        self.pi = pigpio.pi()
-        self.pi.set_mode(self.pin_servo, pigpio.INPUT)
-        self.pi.set_mode(self.pin_thruster, pigpio.INPUT)
-        self.pi.set_mode(self.pin_mode, pigpio.INPUT)
-        self.pi.set_mode(self.pin_or, pigpio.INPUT)
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(pin_servo, GPIO.IN)
+        GPIO.setup(pin_thruster, GPIO.IN)
+        GPIO.setup(pin_mode, GPIO.IN)
+        GPIO.setup(pin_or, GPIO.IN)
+        # self.pi = pigpio.pi()
+        # self.pi.set_mode(self.pin_servo, pigpio.INPUT)
+        # self.pi.set_mode(self.pin_thruster, pigpio.INPUT)
+        # self.pi.set_mode(self.pin_mode, pigpio.INPUT)
+        # self.pi.set_mode(self.pin_or, pigpio.INPUT)
 
     def measure_pulse_width(self):
         """
@@ -78,9 +78,12 @@ class PwmRead:
         print("start measure1")
         for i in range(self._num_cycles):
             print("start measure2")
-            self.pi.wait_for_edge(self.pin_mode, pigpio.RISING_EDGE)
+            GPIO.wait_for_edge(self.pin_mode, GPIO.RISING)
             start = time.time()
-            self.pi.wait_for_edge(self.pin_mode, pigpio.FALLING_EDGE)
+            GPIO.wait_for_edge(self.pin_mode, GPIO.FALLING)
+            # self.pi.wait_for_edge(self.pin_mode, pigpio.RISING_EDGE)
+            # start = time.time()
+            # self.pi.wait_for_edge(self.pin_mode, pigpio.FALLING_EDGE)
             pulse = (time.time() - start) * 1000 * 1000
             if 900 < pulse < 2200:
                 sum_mode += pulse
@@ -97,9 +100,12 @@ class PwmRead:
         num_error = 0
         print("start measure3")
         for i in range(self._num_cycles):
-            self.pi.wait_for_edge(self.pin_servo, pigpio.RISING_EDGE)
+            GPIO.wait_for_edge(self.pin_mode, GPIO.RISING)
             start = time.time()
-            self.pi.wait_for_edge(self.pin_servo, pigpio.FALLING_EDGE)
+            GPIO.wait_for_edge(self.pin_mode, GPIO.FALLING)
+            # self.pi.wait_for_edge(self.pin_servo, pigpio.RISING_EDGE)
+            # start = time.time()
+            # self.pi.wait_for_edge(self.pin_servo, pigpio.FALLING_EDGE)
             pulse = (time.time() - start) * 1000 * 1000
             if 900 < pulse < 2200:
                 sum_servo += pulse
@@ -115,9 +121,12 @@ class PwmRead:
         sum_thruster = 0.0
         num_error = 0
         for i in range(self._num_cycles):
-            self.pi.wait_for_edge(self.pin_thruster, pigpio.RISING_EDGE)
+            GPIO.wait_for_edge(self.pin_mode, GPIO.RISING)
             start = time.time()
-            self.pi.wait_for_edge(self.pin_thruster, pigpio.FALLING_EDGE)
+            GPIO.wait_for_edge(self.pin_mode, GPIO.FALLING)
+            # self.pi.wait_for_edge(self.pin_thruster, pigpio.RISING_EDGE)
+            # start = time.time()
+            # self.pi.wait_for_edge(self.pin_thruster, pigpio.FALLING_EDGE)
             pulse = (time.time() - start) * 1000 * 1000
             if 900 < pulse < 2200:
                 sum_thruster += pulse
@@ -139,9 +148,12 @@ class PwmRead:
         # print("It takes ", b, "[s] to measure PWM")
 
         # insert measurement pin_OR # calculation self.pulse_width[3]
-        self.pi.wait_for_edge(self.pin_or, pigpio.RISING_EDGE)
+        GPIO.wait_for_edge(self.pin_mode, GPIO.RISING)
         start = time.time()
-        self.pi.wait_for_edge(self.pin_or, pigpio.FALLING_EDGE)
+        GPIO.wait_for_edge(self.pin_mode, GPIO.FALLING)
+        # self.pi.wait_for_edge(self.pin_or, pigpio.RISING_EDGE)
+        # start = time.time()
+        # self.pi.wait_for_edge(self.pin_or, pigpio.FALLING_EDGE)
         latest_or_pulse = (time.time() - start) * 1000 * 1000
 
         # update queue
@@ -164,11 +176,11 @@ class PwmRead:
         return
 
     def finalize(self):
-        #GPIO.cleanup(self.pin_mode)
-        #GPIO.cleanup(self.pin_servo)
-        #GPIO.cleanup(self.pin_thruster)
-        #GPIO.pi.cleanup(self.pin_or)
-        self.pi.stop()
+        GPIO.cleanup(self.pin_mode)
+        GPIO.cleanup(self.pin_servo)
+        GPIO.cleanup(self.pin_thruster)
+        GPIO.pi.cleanup(self.pin_or)
+        # self.pi.stop()
         return
 
 

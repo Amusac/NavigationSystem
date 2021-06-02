@@ -38,35 +38,35 @@ class RemoteControll:
         # for test
         self._pwm_read.print_pulse_width()
 
-        mode = self._status.mode
-        if mode == "RC":
-            pass
-        elif mode == "AN":
-            self._auto_navigation()
-        elif mode == "OR":
-            self._out_of_range_operation()
+        # mode = self._status.mode
+        # if mode == "RC":
+        #     pass
+        # elif mode == "AN":
+        #     self._auto_navigation()
+        # elif mode == "OR":
+        #     self._out_of_range_operation()
 
         self._pwm_out.update_pulse_width()
-        self._print_log()
+        # self._print_log()
         time.sleep(self._sleep_time)
 
-    def _update_mode(self):
-        mode_duty_ratio = self._pwm_read.pulse_width["mode"]
-        or_pulse = self._pwm_read.pulse_width["OR"]
-        # OR mode
-        if or_pulse < 1300 or (1500 <= mode_duty_ratio and self._or_experienced):
-            if not self._or_experienced:
-                self._status.update_way_point()
-            self._status.mode = "OR"
-            self._or_experienced = True
-        # RC mode
-        elif 0 < mode_duty_ratio < 1500:
-            self._status.mode = "RC"
-        # AN mode
-        elif 1500 <= mode_duty_ratio and not self._or_experienced:
-            self._status.mode = "AN"
-        else:
-            print("Error: mode updating failed", file=sys.stderr)
+    # def _update_mode(self):
+    #     mode_duty_ratio = self._pwm_read.pulse_width["mode"]
+    #     or_pulse = self._pwm_read.pulse_width["OR"]
+    #     # OR mode
+    #     if or_pulse < 1300 or (1500 <= mode_duty_ratio and self._or_experienced):
+    #         if not self._or_experienced:
+    #             self._status.update_way_point()
+    #         self._status.mode = "OR"
+    #         self._or_experienced = True
+    #     # RC mode
+    #     elif 0 < mode_duty_ratio < 1500:
+    #         self._status.mode = "RC"
+    #     # AN mode
+    #     elif 1500 <= mode_duty_ratio and not self._or_experienced:
+    #         self._status.mode = "AN"
+    #     else:
+    #         print("Error: mode updating failed", file=sys.stderr)
 
     def finalize(self):
         self._pwm_read.finalize()

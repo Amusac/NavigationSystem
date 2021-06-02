@@ -116,7 +116,8 @@ class PwmRead:
                 sum_thruster += pulse
             else:
                 num_error += 1
-
+        
+        print("test9")
         if self._num_cycles != num_error:
             ave = sum_thruster / (self._num_cycles - num_error)
             ave = round(ave, -2)
@@ -130,13 +131,14 @@ class PwmRead:
 
         # b = time.time() - a
         # print("It takes ", b, "[s] to measure PWM")
-        self.pulse_width["tes12"]
+        
+        print("test12")
         # insert measurement pin_OR # calculation self.pulse_width[3]
         GPIO.wait_for_edge(self.pin_or, GPIO.RISING)
         start = time.time()
         GPIO.wait_for_edge(self.pin_or, GPIO.FALLING)
         latest_or_pulse = (time.time() - start) * 1000 * 1000
-        self.pulse_width["tes13"]
+        print("test12")
         # update queue
         oldest_or_pulse = self._or_queue.get()
         self._or_queue.put(latest_or_pulse)
@@ -146,7 +148,7 @@ class PwmRead:
 
         self.pulse_width["OR"] = self._or_mean
         
-        self.pulse_width["tes14"]
+        print("test13")
         return
 
     def print_pulse_width(self):

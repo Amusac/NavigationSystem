@@ -141,7 +141,7 @@ class PwmRead:
         # self._or_mean += (latest_or_pulse - oldest_or_pulse) / self._or_queue_size
 
         # self.pulse_width["OR"] = self._or_mean
-        
+
         return
 
     def print_pulse_width(self):

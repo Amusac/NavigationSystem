@@ -8,7 +8,7 @@
 #   Author: Tetsuro Ninomiya
 #
 
-#import pigpio  # pigpioモジュールを使用
+# import pigpio  # pigpioモジュールを使用
 
 import RPi.GPIO as GPIO
 import time
@@ -180,7 +180,7 @@ class PwmRead:
         GPIO.cleanup(self.pin_servo)
         GPIO.cleanup(self.pin_thruster)
         GPIO.cleanup(self.pin_or)
-        #self.pi.stop()
+        # self.pi.stop()
         return
 
 

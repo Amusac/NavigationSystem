@@ -8,8 +8,6 @@
 #   Author: Tetsuro Ninomiya
 #
 
-# import pigpio  # pigpioモジュールを使用
-
 import RPi.GPIO as GPIO
 import time
 from queue import Queue
@@ -41,11 +39,6 @@ class PwmRead:
         GPIO.setup(pin_thruster, GPIO.IN)
         GPIO.setup(pin_mode, GPIO.IN)
         GPIO.setup(pin_or, GPIO.IN)
-        # self.pi = pigpio.pi()
-        # self.pi.set_mode(self.pin_servo, pigpio.INPUT)
-        # self.pi.set_mode(self.pin_thruster, pigpio.INPUT)
-        # self.pi.set_mode(self.pin_mode, pigpio.INPUT)
-        # self.pi.set_mode(self.pin_or, pigpio.INPUT)
 
     def measure_pulse_width(self):
         """
@@ -79,9 +72,6 @@ class PwmRead:
             GPIO.wait_for_edge(self.pin_mode, GPIO.RISING)
             start = time.time()
             GPIO.wait_for_edge(self.pin_mode, GPIO.FALLING)
-            # self.pi.wait_for_edge(self.pin_mode, pigpio.RISING_EDGE)
-            # start = time.time()
-            # self.pi.wait_for_edge(self.pin_mode, pigpio.FALLING_EDGE)
             pulse = (time.time() - start) * 1000 * 1000
             if 900 < pulse < 2200:
                 sum_mode += pulse
@@ -100,9 +90,6 @@ class PwmRead:
             GPIO.wait_for_edge(self.pin_servo, GPIO.RISING)
             start = time.time()
             GPIO.wait_for_edge(self.pin_servo, GPIO.FALLING)
-            # self.pi.wait_for_edge(self.pin_servo, pigpio.RISING_EDGE)
-            # start = time.time()
-            # self.pi.wait_for_edge(self.pin_servo, pigpio.FALLING_EDGE)
             pulse = (time.time() - start) * 1000 * 1000
             if 900 < pulse < 2200:
                 sum_servo += pulse
@@ -121,9 +108,6 @@ class PwmRead:
             GPIO.wait_for_edge(self.pin_thruster, GPIO.RISING)
             start = time.time()
             GPIO.wait_for_edge(self.pin_thruster, GPIO.FALLING)
-            # self.pi.wait_for_edge(self.pin_thruster, pigpio.RISING_EDGE)
-            # start = time.time()
-            # self.pi.wait_for_edge(self.pin_thruster, pigpio.FALLING_EDGE)
             pulse = (time.time() - start) * 1000 * 1000
             if 900 < pulse < 2200:
                 sum_thruster += pulse
@@ -148,9 +132,6 @@ class PwmRead:
         GPIO.wait_for_edge(self.pin_or, GPIO.RISING)
         start = time.time()
         GPIO.wait_for_edge(self.pin_or, GPIO.FALLING)
-        # self.pi.wait_for_edge(self.pin_or, pigpio.RISING_EDGE)
-        # start = time.time()
-        # self.pi.wait_for_edge(self.pin_or, pigpio.FALLING_EDGE)
         latest_or_pulse = (time.time() - start) * 1000 * 1000
 
         # update queue

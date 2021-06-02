@@ -68,6 +68,7 @@ class PwmRead:
         # mode
         sum_mode = 0.0
         num_error = 0
+        print("test1")
         for i in range(self._num_cycles):
             GPIO.wait_for_edge(self.pin_mode, GPIO.RISING)
             start = time.time()
@@ -86,6 +87,7 @@ class PwmRead:
         # servo
         sum_servo = 0.0
         num_error = 0
+        print("test2")
         for i in range(self._num_cycles):
             GPIO.wait_for_edge(self.pin_servo, GPIO.RISING)
             start = time.time()
@@ -104,6 +106,7 @@ class PwmRead:
         # thruster
         sum_thruster = 0.0
         num_error = 0
+        print("test3")
         for i in range(self._num_cycles):
             GPIO.wait_for_edge(self.pin_thruster, GPIO.RISING)
             start = time.time()
@@ -158,7 +161,6 @@ class PwmRead:
         GPIO.cleanup(self.pin_servo)
         GPIO.cleanup(self.pin_thruster)
         GPIO.cleanup(self.pin_or)
-        # self.pi.stop()
         return
 
 
@@ -182,7 +184,6 @@ if __name__ == "__main__":
 
     except KeyboardInterrupt:
         print("KeyboardInterrupt")
-        pwm_read.finalize()
         pass
     finally:
         pwm_read.finalize()

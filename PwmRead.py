@@ -103,6 +103,7 @@ class PwmRead:
             if 1000 < ave < 2000:
                 self.pulse_width["servo"] = ave
         
+
         # thruster
         sum_thruster = 0.0
         num_error = 0

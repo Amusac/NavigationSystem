@@ -128,19 +128,19 @@ class PwmRead:
         # b = time.time() - a
         # print("It takes ", b, "[s] to measure PWM")
 
-        # # insert measurement pin_OR # calculation self.pulse_width[3]
-        # GPIO.wait_for_edge(self.pin_or, GPIO.RISING)
-        # start = time.time()
-        # GPIO.wait_for_edge(self.pin_or, GPIO.FALLING)
-        # latest_or_pulse = (time.time() - start) * 1000 * 1000
-        # # update queue
-        # oldest_or_pulse = self._or_queue.get()
-        # self._or_queue.put(latest_or_pulse)
+        # insert measurement pin_OR # calculation self.pulse_width[3]
+        GPIO.wait_for_edge(self.pin_or, GPIO.RISING)
+        start = time.time()
+        GPIO.wait_for_edge(self.pin_or, GPIO.FALLING)
+        latest_or_pulse = (time.time() - start) * 1000 * 1000
+        # update queue
+        oldest_or_pulse = self._or_queue.get()
+        self._or_queue.put(latest_or_pulse)
 
-        # # update mean value
-        # self._or_mean += (latest_or_pulse - oldest_or_pulse) / self._or_queue_size
+        # update mean value
+        self._or_mean += (latest_or_pulse - oldest_or_pulse) / self._or_queue_size
 
-        # self.pulse_width["OR"] = self._or_mean
+        self.pulse_width["OR"] = self._or_mean
 
         return
 
@@ -148,11 +148,11 @@ class PwmRead:
         print("mode:     ", self.pulse_width["mode"], "[us]")
         print("servo:    ", self.pulse_width["servo"], "[us]")
         print("thruster: ", self.pulse_width["thruster"], "[us]")
-        # print("OR_judgement: ", self.pulse_width["OR"], "[us]")
+        print("OR_judgement: ", self.pulse_width["OR"], "[us]")
         print("")
         return
 
-    def finalize(self):
+    def end(self):
         GPIO.cleanup(self.pin_mode)
         GPIO.cleanup(self.pin_servo)
         GPIO.cleanup(self.pin_thruster)

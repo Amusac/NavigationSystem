@@ -1,6 +1,5 @@
 import csv
 
-
 class Logger:
     filename = "gpslog.csv"
 

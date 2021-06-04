@@ -182,5 +182,5 @@ if __name__ == "__main__":
         print("KeyboardInterrupt")
         pass
     finally:
-        pwm_read.finalize()
+        pwm_read.end()
         print("Execution finished.")
